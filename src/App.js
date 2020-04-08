@@ -11,7 +11,7 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
-    const response = await axios.get('https://myapi-profstream.herokuapp.com/api/ee686f/wines')
+    const response = await axios.get('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
     console.log(response);
   } catch(e){
     console.log(e);
@@ -19,9 +19,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-
-        <form>
+      <div className="parent">
+        <h1>Wine List</h1>
+        <p>Use the form to input new wines</p>
+        <form action="https://myapi-profstream.herokuapp.com/api/ee686f/wines">
           <input type ="text" name="description" placeholder="wine name" />
           
           <button type="submit">Submit</button>
