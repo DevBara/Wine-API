@@ -15,6 +15,12 @@ export default class App extends Component {
     }
     // this.handleClick.bind(this)
   }
+
+  componentDidMount(){
+    this.getWineList();
+    this.handleClick()
+    // this.deleteWine()
+  }
     getWineList(){
       axios.get('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
     .then(response => {
@@ -27,43 +33,32 @@ export default class App extends Component {
   }
   
     handleClick() {
-      axios.post('http://myapi-profstream.herokuapp.com/api/ee686f/wines',{
-      "id":'',
-      "name": "",
-      "year": '',
-      "grapes": "",
-      "country": "",
-      "region": "",
-      "description": "",
-      "picture": "",
-      "price": '',
-    })
-      .then(response => {
-      }).catch(error =>{
-    })
+      axios.post('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
+        .then(response => {
+          console.log(response);
+          console.log(response.data)
+        }).catch(error =>{
+      })
   }
-  // deleteWine(){
-  //   axios.delete('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
-  //     .then(data =>{
-  //       console.log(data);
-  //     }).catch(error => {
-  //       console.log(error)
-  //     })
-  // }
+  deleteWine(){
+    axios.delete('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
+      .then(response =>{
+        console.log(response);
+      }).catch(error => {
+        console.log(error)
+      })
+  }
 
-  componentDidMount(){
-    this.getWineList()
-    // this.deleteWine()
-  }
+
 
   render() {
     
     return (
       <div className="parent">
         <h1>Wine List</h1>
-        <p>Look here: {this.getWineList}</p>
+       
         <p>Use the form to input new wines</p>
-        <form action="https://myapi-profstream.herokuapp.com/api/ee686f/wines">
+        <form method="POST" action="http://myapi-profstream.herokuapp.com/api/ee686f/wines">
           <input type ="text" placeholder="Name of Wine" />
           <input type ="id" placeholder="ID" />
           <select type ="text" name="years">
@@ -82,8 +77,9 @@ export default class App extends Component {
           <input type ="text" placeholder="Region" />
           <input type ="text" placeholder="Description" />
           <input type ="text" placeholder="Price" />
+          <button type="submit" value="Submit" onClick={this.handleClick}> Submit </button>
           
-          <button onClick={this.handleClick}>Submit</button>
+          
         </form>
         <button>Delete</button>
         
