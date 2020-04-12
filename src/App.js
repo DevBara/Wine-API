@@ -9,7 +9,6 @@ export default class App extends Component {
       data: [],
     }
   }
-
     getWineList(){
       axios.get('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
     .then(response => {
@@ -20,8 +19,7 @@ export default class App extends Component {
       console.log(error);
     })
   }
-
-
+  
     postNewWine() {
       axios.post('http://myapi-profstream.herokuapp.com/api/ee686f/wines',{
       "name": "test",
@@ -34,40 +32,31 @@ export default class App extends Component {
       "price": 23,
     })
       .then(response => {
-        console.log(response);
       }) .catch(error =>{
-          console.log(error);
-      })
-
-      deleteWine(){
-        axios. delete('http://myapi-profstream.herokuapp.com/api/ee686f/wine')
-      }
-
-    componentDidMount(){
-      this.getWineList();
-    }
- 
-      
+    })
   }
 
-  
-
+   
+      
 
   render() {
+  
     const {data}=this.state;
     
     return (
       <div className="parent">
         <h1>Wine List</h1>
         <p>Look here: {data}</p>
-        {/* <p>Use the form to input new wines</p>
+        <p>Use the form to input new wines</p>
         <form action="https://myapi-profstream.herokuapp.com/api/ee686f/wines">
           <input type ="text" name="description" placeholder="wine name" />
           
           <button type="submit">Submit</button>
-        </form> */}
+        </form>
         
       </div>
     )
+      
+    } 
   }
-}
+
