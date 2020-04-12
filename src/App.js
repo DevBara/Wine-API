@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+
+//Page is displaying whole wine list once button click
+//once page loads from submit, it does not go back to default/home
+//have to exit out and go back in
+
 export default class App extends Component {
   constructor(props){
     super(props);
@@ -20,16 +25,17 @@ export default class App extends Component {
     })
   }
   
-    postNewWine() {
+    handleClick() {
       axios.post('http://myapi-profstream.herokuapp.com/api/ee686f/wines',{
-      "name": "test",
-      "year": 2009,
-      "grapes": "sour",
-      "country": "USA",
-      "region": "Triple D",
-      "description": "The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine, which makes an excellent complement to fish dishes.",
+      "id":'',
+      "name": "",
+      "year": '',
+      "grapes": "",
+      "country": "",
+      "region": "",
+      "description": "",
       "picture": "",
-      "price": 23,
+      "price": '',
     })
       .then(response => {
       }) .catch(error =>{
@@ -49,9 +55,26 @@ export default class App extends Component {
         <p>Look here: {data}</p>
         <p>Use the form to input new wines</p>
         <form action="https://myapi-profstream.herokuapp.com/api/ee686f/wines">
-          <input type ="text" name="description" placeholder="wine name" />
+          <input type ="text" placeholder="Name of Wine" />
+          <input type ="id" placeholder="ID" />
+          <select type ="text" name="years">
+              <option>Wine Year</option> 
+              <option>2000</option>
+              <option>2001</option>
+              <option>2002</option>
+              <option>2003</option>
+              <option>2004</option>
+              <option>2005</option>
+              <option>2006</option>
+              <option>2007</option>
+          </select>
+          <input type ="text" placeholder="Grape Type" />
+          <input type ="text" placeholder="Country" />
+          <input type ="text" placeholder="Region" />
+          <input type ="text" placeholder="Description" />
+          <input type ="text" placeholder="Price" />
           
-          <button type="submit">Submit</button>
+          <button onClick={this.handleClick()}type="submit">Submit</button>
         </form>
         
       </div>
