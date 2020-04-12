@@ -11,14 +11,16 @@ export default class App extends Component {
     super(props);
 
     this.state ={
-      data: '',
+      data: [],
+      name:[],
+      id:[]
     }
     // this.handleClick.bind(this)
   }
 
   componentDidMount(){
     this.getWineList();
-    this.handleClick()
+    this.postWineList()
     // this.deleteWine()
   }
     getWineList(){
@@ -32,7 +34,7 @@ export default class App extends Component {
     })
   }
   
-    handleClick() {
+    postWineList() {
       axios.post('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
         .then(response => {
           console.log(response);
@@ -50,16 +52,18 @@ export default class App extends Component {
   }
 
 
+  handleSubmit(event){
+    event.preventDefault();
 
+  }
   render() {
     
     return (
       <div className="parent">
         <h1>Wine List</h1>
-       
         <p>Use the form to input new wines</p>
         <form method="POST" action="http://myapi-profstream.herokuapp.com/api/ee686f/wines">
-          <input type ="text" placeholder="Name of Wine" />
+          <input type ="text" placeholder="Name of Wine" onChange={this.handleSubmit} />
           <input type ="id" placeholder="ID" />
           <select type ="text" name="years">
               <option>Wine Year</option> 
@@ -77,12 +81,9 @@ export default class App extends Component {
           <input type ="text" placeholder="Region" />
           <input type ="text" placeholder="Description" />
           <input type ="text" placeholder="Price" />
-          <button type="submit" value="Submit" onClick={this.handleClick}> Submit </button>
-          
-          
-        </form>
-        <button>Delete</button>
-        
+          <button onSubmit={this.handleSubmit} type="submit" value="Submit">Submit</button>
+          <button onDelete={this.deleteWine()}type ="delete" value="Delete">Delete</button>  
+        </form>        
       </div>
     )
       
