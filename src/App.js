@@ -13,6 +13,7 @@ export default class App extends Component {
     this.state ={
       data: [],
     }
+    this.handleClick.bind(this)
   }
     getWineList(){
       axios.get('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
@@ -74,7 +75,7 @@ export default class App extends Component {
           <input type ="text" placeholder="Description" />
           <input type ="text" placeholder="Price" />
           
-          <button onClick={this.handleClick()}type="submit">Submit</button>
+          <button onClick={this.handleClick}type="submit">Submit</button>
         </form>
         
       </div>
