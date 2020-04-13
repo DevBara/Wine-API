@@ -10,7 +10,7 @@ export default class App extends Component {
 // set state to store info
 //Reference Insomnia data flow
     this.state ={
-      wines: '',
+      id: 5454,
       name: "new wine",
       year: 1990,
       grapes: "",
@@ -23,59 +23,60 @@ export default class App extends Component {
   }
   // Do I need to bind anything?
 
-  
-
-  getWine(){
-    axios.get('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
-      .then(response => {
-        console.log(response.data)
-        console.log(response)
-        this.setState({
-          wines:response.data
-        })
-      }).catch(error =>{
-        console.log(error)
-      })
-  }
-
 //Can we connect Post to a form?
 //From research is Post supported on HTML5 if attached to a form?
-  postWine(){
-    axios.post('http://myapi-profstream.herokuapp.com/api/ee686f/wines',{
-      wines: '',
-      name: "testtest",
-      year: 2001,
-      grapes: "sour",
-      country: "Wakanda",
-      region: "FOreign",
-      description: "something goes here",
-      picture: "nnnnn",
-      price: 45,   
+//   newWine(){
+//     axios.post('http://myapi-profstream.herokuapp.com/api/ee686f/wines',{
+//       wines: '',
+//       name: "New wine",
+//       year: 2004,
+//       grapes: "Italian",
+//       country: "USA",
+//       region: "South",
+//       description: "Pairs well with steak",
+//       picture: "nnnnn",
+//       price: 75,   
+//   })
+//     .then(response => {
+//       console.log(response)
+//   }).catch(error =>{
+//     console.log(error)
+//   });
+   
+//  }
+
+
+getWine(){
+  axios.get('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
+    .then(response => {
+      console.log(response)
+      this.setState({
+        wines:response.data
+      })
+    }).catch(error =>{
+      console.log(error)
+    })
+}
+
+//Getting status code 404 
+//404 error was showing due to me rerunning app
+//each refresh deleted an ID to the point nothing was left
+//How do we delete a specific wine? Use Id? since ID is unique?
+deleteWine(){
+  axios.delete('http://myapi-profstream.herokuapp.com/api/ee686f/wines', {
+    params:this.state.id
   })
     .then(response => {
       console.log(response)
-  }).catch(error =>{
-    console.log(error)
-  });
-   
- }
-//Getting status code 404 
-//404 error was showing due to me rerunning app
-//each refreash deleted an ID to the point nothing was left
-//How do we delete a specific wine? Use Id? since ID is unique?
-deleteWine(){
-  axios.delete('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
-    .then(response => {
-      console.log('working?')
     }).catch(error => {
       console.log(error)
     });
   }
 
   componentDidMount(){
-    this.getWine()
-    this.postWine()
-    this.deleteWine()
+    // this.newWine();
+    this.getWine();
+    // this.deleteWine()
   }
   
 //Created buttons to submit(post) new wine & delete wine
