@@ -57,20 +57,22 @@ export default class App extends Component {
   });
    
  }
-// Getting status code 404 
-// deleteWine(){
-//   axios.delete('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
-//     .then(response => {
-//       console.log('working?')
-//     }).catch(error => {
-//       console.log(error)
-//     });
-//   }
+//Getting status code 404 
+//404 error was showing due to me rerunning app
+//each refreash deleted an ID to the point nothing was left
+deleteWine(){
+  axios.delete('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
+    .then(response => {
+      console.log('working?')
+    }).catch(error => {
+      console.log(error)
+    });
+  }
 
   componentDidMount(){
     this.getWine()
     this.postWine()
-    // this.deleteWine()
+    this.deleteWine()
   }
   
 
