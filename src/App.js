@@ -10,9 +10,9 @@ export default class App extends Component {
 // set state to store info
 //Reference Insomnia data flow
     this.state ={
-      id: 5454,
-      name: "new wine",
-      year: 1990,
+      id: 0,
+      name: "",
+      year: 1980,
       grapes: "",
       country: "",
       region: "",
@@ -49,23 +49,21 @@ export default class App extends Component {
 getWine(){
   axios.get('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
     .then(response => {
-      console.log(response)
       this.setState({
-        wines:response.data
+        id: response.data[0].id,
+        wine: response.data.name
       })
+      console.log(response)
     }).catch(error =>{
       console.log(error)
     })
 }
 
 //Getting status code 404 
-//404 error was showing due to me rerunning app
-//each refresh deleted an ID to the point nothing was left
 //How do we delete a specific wine? Use Id? since ID is unique?
+
 deleteWine(){
-  axios.delete('http://myapi-profstream.herokuapp.com/api/ee686f/wines', {
-    params:this.state.id
-  })
+  axios.delete('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
     .then(response => {
       console.log(response)
     }).catch(error => {
@@ -76,16 +74,19 @@ deleteWine(){
   componentDidMount(){
     // this.newWine();
     this.getWine();
-    // this.deleteWine()
+    this.deleteWine()
   }
   
 //Created buttons to submit(post) new wine & delete wine
 //Returned with error codes
 //Need to render wine list on page
   render() {
+
+    const {id} =this.state
     return (
       <div>
         <p>Use the form to input new wines</p>
+        <p>{id}</p>
           <input type ="text" placeholder="Name of Wine" />
           {/* <input type ="id" placeholder="ID" /> */}
           <select type ="text" name="year">
