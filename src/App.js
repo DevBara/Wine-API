@@ -38,6 +38,8 @@ export default class App extends Component {
       })
   }
 
+//Can we connect Post to a form?
+//From research is Post supported on HTML5 if attached to a form?
   postWine(){
     axios.post('http://myapi-profstream.herokuapp.com/api/ee686f/wines',{
       wines: '',
@@ -60,6 +62,7 @@ export default class App extends Component {
 //Getting status code 404 
 //404 error was showing due to me rerunning app
 //each refreash deleted an ID to the point nothing was left
+//How do we delete a specific wine? Use Id? since ID is unique?
 deleteWine(){
   axios.delete('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
     .then(response => {
@@ -75,7 +78,9 @@ deleteWine(){
     this.deleteWine()
   }
   
-
+//Created buttons to submit(post) new wine & delete wine
+//Returned with error codes
+//Need to render wine list on page
   render() {
     return (
       <div>
