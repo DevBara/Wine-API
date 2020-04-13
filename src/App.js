@@ -11,6 +11,7 @@ export default class App extends Component {
 //Reference Insomnia data flow
     this.state ={
       wines: '',
+      id: '',
       name: "new wine",
       year: 1990,
       grapes: "",
@@ -56,6 +57,15 @@ export default class App extends Component {
     console.log(error)
   });
    
+}
+
+deleteWine(){
+  const {id} =this.state;
+  axios.delete('http://myapi-profstream.herokuapp.com/api/db6de6/wines',{params: {id:id.id}})
+    .then(response => {
+      console.log(response)
+      console.log({id})
+    })
 }
 
   componentDidMount(){
