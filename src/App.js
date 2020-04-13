@@ -11,7 +11,6 @@ export default class App extends Component {
 //Reference Insomnia data flow
     this.state ={
       wines: '',
-      id: '',
       name: "new wine",
       year: 1990,
       grapes: "",
@@ -27,7 +26,7 @@ export default class App extends Component {
   
 
   getWine(){
-    axios.get('http://myapi-profstream.herokuapp.com/api/db6de6/wines')
+    axios.get('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
       .then(response => {
         console.log(response.data)
         console.log(response)
@@ -40,7 +39,7 @@ export default class App extends Component {
   }
 
   postWine(){
-    axios.post('http://myapi-profstream.herokuapp.com/api/db6de6/wines',{
+    axios.post('http://myapi-profstream.herokuapp.com/api/ee686f/wines',{
       wines: '',
       name: "testtest",
       year: 2001,
@@ -57,21 +56,23 @@ export default class App extends Component {
     console.log(error)
   });
    
-}
-
-deleteWine(){
-  const {id} =this.state;
-  axios.delete('http://myapi-profstream.herokuapp.com/api/db6de6/wines',{params: {id:id.id}})
-    .then(response => {
-      console.log(response)
-      console.log({id})
-    })
-}
+ }
+// Getting status code 404 
+// deleteWine(){
+//   axios.delete('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
+//     .then(response => {
+//       console.log('working?')
+//     }).catch(error => {
+//       console.log(error)
+//     });
+//   }
 
   componentDidMount(){
-    this.getWine();
-    this.postWine();
+    this.getWine()
+    this.postWine()
+    // this.deleteWine()
   }
+  
 
   render() {
     return (
