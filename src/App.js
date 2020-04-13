@@ -38,20 +38,38 @@ export default class App extends Component {
       })
   }
 
+  postWine(){
+    axios.post('http://myapi-profstream.herokuapp.com/api/db6de6/wines',{
+      wines: '',
+      name: "testtest",
+      year: 2001,
+      grapes: "sour",
+      country: "Wakanda",
+      region: "FOreign",
+      description: "something goes here",
+      picture: "nnnnn",
+      price: 45,   
+  })
+    .then(response => {
+      console.log(response)
+  }).catch(error =>{
+    console.log(error)
+  });
+   
+}
+
   componentDidMount(){
     this.getWine();
+    this.postWine();
   }
 
   render() {
     return (
       <div>
-        
         <p>Use the form to input new wines</p>
-        <form action="https://myapi-profstream.herokuapp.com/api/ee686f/wines">
-          <input type ="text" name="description" placeholder="wine name" />
           <input type ="text" placeholder="Name of Wine" />
-          <input type ="id" placeholder="ID" />
-          <select type ="text" name="years">
+          {/* <input type ="id" placeholder="ID" /> */}
+          <select type ="text" name="year">
               <option>Wine Year</option> 
               <option>2000</option>
               <option>2001</option>
@@ -67,10 +85,13 @@ export default class App extends Component {
           <input type ="text" placeholder="Region" />
           <input type ="text" placeholder="Description" />
           <input type ="text" placeholder="Price" />
-
-          <button type="submit">Submit New Wine</button>
-          <button type="submit">Delete A Wine</button>
-        </form>
+        <div>
+            {/* on click of submit- data needs to go to Wine API-Post Request */}
+            <button type="submit">Submit New Wine</button>
+            {/* On click on delete- data needs to be removed from Wine API
+            -Delete Request -event that links to delete request*/}
+            <button type="submit">Delete A Wine</button>
+       </div>
       </div>
       
     )
