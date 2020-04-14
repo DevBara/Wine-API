@@ -10,6 +10,7 @@ export default class App extends Component {
 
 //Getting status code 404 
 //How do we delete a specific wine? Use Id? since ID is unique?
+//records not deleting
 
 deleteWine(){
   axios.delete('http://myapi-profstream.herokuapp.com/api/db6de6/wines')
