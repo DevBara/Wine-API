@@ -9,12 +9,12 @@ export default class GetWine extends Component {
         this.state ={
           wines: [],
           id: 0,
-          name: "null",
+          name: "",
           year: 1980,
           grapes: "",
           country: "",
           region: "",
-          description: "something goes here",
+          description: "",
           picture: "",
           price: 0,
         }
@@ -26,7 +26,7 @@ export default class GetWine extends Component {
             this.setState({
               wines:response.data
             })
-            console.log(response)
+            
           }).catch(error =>{
             console.log(error)
           })
@@ -37,16 +37,21 @@ export default class GetWine extends Component {
       }
 
 
-
+//Must we render in ul & li?
+//map function 
     render() {
         return (
             <div>
             {
                 this.state.wines.map((wine) => (
                     <div className='wineKid' key={wine.id}>
-                        <ul>
-                            <li key ={wine.id}> {wine.name} {wine.grapes}</li>
-                        </ul>
+                            <p>
+                                <img key={wine.id} src={wine.picture} alt ='wine bottle'/>
+                            </p>
+                            <p key ={wine.id}>
+                                {wine.name}       
+                            </p>
+                       
                     </div>
                 ))
             })
