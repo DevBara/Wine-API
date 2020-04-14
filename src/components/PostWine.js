@@ -25,14 +25,14 @@ export default class App extends Component {
     newWine(){
       axios.post('http://myapi-profstream.herokuapp.com/api/ee686f/wines',{
         wines: '',
-        name: "New wine",
-        year: 2004,
-        grapes: "Italian",
-        country: "USA",
-        region: "South",
-        description: "Pairs well with steak",
-        picture: "nnnnn",
-        price: 75,   
+        // name: "New wine",
+        // year: 2004,
+        // grapes: "Italian",
+        // country: "USA",
+        // region: "South",
+        // description: "Pairs well with steak",
+        // picture: "nnnnn",
+        // price: 75,   
     })
       .then(response => {
         console.log(response)
