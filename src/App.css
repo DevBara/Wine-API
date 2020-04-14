@@ -1,5 +1,5 @@
 body{
-  background-color: rgba(90, 11, 90, 0.637);
+  background-color: purple
 }
 
 ul{
@@ -9,18 +9,22 @@ ul{
 .parent{
  display:grid;
  grid-template-columns: 45% 60% ;
- background-color: rgba(90, 11, 90, 0.637);
+ background-color: rgba(97, 8, 97, 0.794);
  text-align: center;
 }
 
 .title{
   padding:0px;
   margin:0px;
-  background-color: rgba(90, 11, 90, 0.637);
+  background-color: purple;
   text-align: center;
   font-size: 30px;
 }
 
-form{
-  font-size: 45px;
+button{
+  font-size: 15px;
+  float:right;
+  margin:0px;
+  margin-right:8px;
+
 }
