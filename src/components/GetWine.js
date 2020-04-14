@@ -21,7 +21,7 @@ export default class GetWine extends Component {
       }
 
       getWine(){
-        axios.get('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
+        axios.get('http://myapi-profstream.herokuapp.com/api/db6de6/wines')
           .then(response => {
             this.setState({
               wines:response.data
@@ -38,20 +38,20 @@ export default class GetWine extends Component {
 
 
 //Must we render in ul & li?
-//map function 
+//map function to pull data
+//why arent pictures showing?
     render() {
         return (
-            <div>
+            <div className='parent'>
             {
                 this.state.wines.map((wine) => (
-                    <div className='wineKid' key={wine.id}>
-                            <p>
-                                <img key={wine.id} src={wine.picture} alt ='wine bottle'/>
-                            </p>
-                            <p key ={wine.id}>
-                                {wine.name}       
-                            </p>
-                       
+                  <div className='wineKid' key={wine.id}>
+                    <p>
+                       <img className='winepics' key={wine.id} src={wine.picture} alt ='wine bottle'/>
+                    </p>
+                    <p key ={wine.id}>
+                       {wine.name}       
+                    </p>
                     </div>
                 ))
             })
