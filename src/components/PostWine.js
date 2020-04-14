@@ -46,10 +46,10 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <form>
-                    <input type ="text" placeholder="Name of Wine" />
+                {/* <form>
+                    <input type ="text" placeholder="Name of Wine" /> */}
                     {/* <input type ="id" placeholder="ID" /> */}
-                    <select type ="text" name="year">
+                    {/* <select type ="text" name="year">
                         <option>Wine Year</option> 
                         <option>2000</option>
                         <option>2001</option>
@@ -65,14 +65,14 @@ export default class App extends Component {
                     <input type ="text" placeholder="Region" />
                     <input type ="text" placeholder="Description" />
                     <input type ="text" placeholder="Price" />
-                <div>
+                <div> */}
                     {/* on click of submit- data needs to go to Wine API-Post Request */}
                     <button className='enter' type="submit">Submit New Wine</button>
                     {/* On click on delete- data needs to be removed from Wine API
                     -Delete Request -event that links to delete request*/}
                     <button type="submit">Delete A Wine</button>
-                </div>
-            </form>
+                {/* </div>
+            </form> */}
             </div>
           )
         }
