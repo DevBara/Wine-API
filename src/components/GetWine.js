@@ -39,10 +39,14 @@ export default class GetWine extends Component {
 
 //Must we render in ul & li?
 //map function to pull data
-//why arent pictures showing?
+
     render() {
         return (
+            <div className='title'>
+                <h1>Lovely Wines</h1>
+            
             <div className='parent'>
+             
             {
                 this.state.wines.map((wine) => (
                   <div className='wineKid' key={wine.id}>
@@ -56,6 +60,7 @@ export default class GetWine extends Component {
                 ))
             })
             </div>
+          </div>
         )
     }
 }

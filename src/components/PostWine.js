@@ -24,7 +24,6 @@ export default class App extends Component {
 //   From research is Post supported on HTML5 if attached to a form?
     newWine(){
       axios.post('http://myapi-profstream.herokuapp.com/api/ee686f/wines',{
-       
         name: "New wine",
         year: 2004,
         grapes: "Italian",
@@ -42,6 +41,8 @@ export default class App extends Component {
      
    }
 
+   //Need Post to work on button click
+   //Works only when page refreshes, MUST fix
     render() {
         return (
             <div>
@@ -66,7 +67,7 @@ export default class App extends Component {
                     <input type ="text" placeholder="Price" />
                 <div>
                     {/* on click of submit- data needs to go to Wine API-Post Request */}
-                    <button  type="submit">Submit New Wine</button>
+                    <button className='enter' type="submit">Submit New Wine</button>
                     {/* On click on delete- data needs to be removed from Wine API
                     -Delete Request -event that links to delete request*/}
                     <button type="submit">Delete A Wine</button>

@@ -12,7 +12,7 @@ export default class App extends Component {
 //How do we delete a specific wine? Use Id? since ID is unique?
 
 deleteWine(){
-  axios.delete('http://myapi-profstream.herokuapp.com/api/ee686f/wines')
+  axios.delete('http://myapi-profstream.herokuapp.com/api/db6de6/wines')
     .then(response => {
       console.log(response)
     }).catch(error => {
@@ -23,8 +23,8 @@ deleteWine(){
   render() {
     return (
       <div>
-        <GetWine /> 
         <PostWine />
+        <GetWine /> 
       </div>
       
       
